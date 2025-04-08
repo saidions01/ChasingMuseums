@@ -1,0 +1,779 @@
+@font-face {
+  font-family: "WizardOfTheMoon";
+  src: url("../assets/fonts/WizardOfTheMoon-YG5y.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GothaniaSerifPersonalUseRegular";
+  src: url("../assets/fonts/GothaniaSerifPersonalUseRegular-9MKw0.otf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MiddleEarthPersonalUseRegular";
+  src: url("../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace, sans-serif;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 800px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+}
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+.hero-section {
+  margin-left: 100px;
+  margin-top: 5px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Sidebar */
+.sidebar {
+  width: 60px;
+  background-color: #2c2c2c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  gap: 30px;
+  color: white;
+  font-size: 24px;
+}
+.social-icons a {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  gap: 30px;
+  color: white;
+  font-size: 24px;
+}
+
+/* Main Content */
+.main {
+  margin-left: 60px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Navigation */
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 40px 0 0;
+  gap: 40px;
+  font-size: 14px;
+}
+
+.nav span {
+  cursor: pointer;
+  color: #ccc;
+}
+.nav a {
+  cursor: pointer;
+  color: #ccc;
+  font-size: 24px;
+}
+
+.nav .active {
+  border-bottom: 2px solid white;
+  color: white;
+  padding-bottom: 3px;
+  font-weight: bold;
+}
+
+/* Image */
+.image-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.image-wrapper img {
+  width: 500px;
+  object-fit: contain;
+}
+
+/* Info Section */
+.info-section {
+  background: linear-gradient(to bottom right, #1a1a1a, #2c2c2c);
+  padding: 40px;
+}
+
+.info-section h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  font-size: 14px;
+}
+
+.label {
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.dot {
+  font-size: 24px;
+  margin-top: 10px;
+}
+/* Additional Styles */
+.content-section {
+  padding: 40px;
+}
+.tagline {
+  font-size: 22px;
+}
+.timeline {
+  border-left: 2px solid #daa520;
+  margin-left: 20px;
+  padding-left: 30px;
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.phase-marker {
+  background: #daa520;
+  color: #1e1e1e;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Interactive Elements */
+.icon-hover {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.icon-hover:hover {
+  color: #daa520;
+  transform: scale(1.2);
+}
+
+.hover-zoom {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.image-wrapper:hover .image-overlay {
+  opacity: 1;
+}
+
+.info-item {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.info-item:hover {
+  background: #2c2c2c;
+}
+
+.info-item.active {
+  background: #daa52020;
+  border: 1px solid #daa520;
+}
+
+.info-tooltip {
+  position: absolute;
+  background: #2c2c2c;
+  padding: 10px;
+  border-radius: 4px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+.slide-in {
+  animation: slideUp 0.5s ease forwards;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.visible {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Menu Animation */
+.sidebar {
+  transition: width 0.3s ease;
+}
+
+.sidebar.open {
+  width: 200px;
+}
+/* Navigation Links */
+.nav a {
+  text-decoration: none;
+  color: #ccc;
+  position: relative;
+  padding-bottom: 3px;
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  color: #daa520;
+}
+
+.nav a.active {
+  color: white;
+  font-weight: bold;
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #daa520;
+  animation: underlineSlide 0.3s ease;
+}
+
+@keyframes underlineSlide {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.nav a:not(.active):hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #daa520;
+  transform: scaleX(0.5);
+  transition: transform 0.3s ease;
+}
+
+.nav a:not(.active):hover::after {
+  transform: scaleX(1);
+}
+/* Problems Section Styling */
+.problems-section {
+  padding: 4rem 2rem;
+  background: #2c2c2c;
+}
+
+.problems-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.problems-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.problem-card {
+  background: #2c2c2c;
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.problem-card.active {
+  background: #1e1e1e;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.problem-icon {
+  font-size: 2.5rem;
+  color: #daa520;
+  margin-bottom: 1rem;
+}
+
+.problem-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.problem-description {
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+}
+
+.problem-stat {
+  background: #e74c3c11;
+  padding: 0.8rem;
+  border-radius: 8px;
+  color: #daa520;
+  font-weight: 600;
+}
+
+.problem-stat .source {
+  display: block;
+  font-size: 0.8rem;
+  color: #95a5a6;
+  margin-top: 0.5rem;
+}
+
+.problem-solution {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: #11502b;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.problem-card.active .problem-solution {
+  bottom: 0;
+}
+
+.problem-solution h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .problems-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-card {
+    min-height: 250px;
+  }
+}
+
+/* Video Section */
+.video-demo {
+  padding: 4rem 2rem;
+  background: #daa520;
+  color: white;
+  text-align: center;
+}
+
+.video-demo h2 {
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+}
+
+.video-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 16/9;
+}
+
+.game-trailer {
+  transition: transform 0.3s ease;
+}
+
+.game-trailer:hover {
+  transform: scale(1.02);
+}
+
+.video-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  text-align: left;
+}
+
+.highlight-text {
+  background: #daa520;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  display: inline-block;
+  backdrop-filter: blur(2px);
+}
+
+.play-button {
+  background: #daa520;
+  border: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background: #daa520;
+}
+
+.video-caption {
+  margin-top: 1.5rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .video-demo {
+    padding: 2rem 1rem;
+  }
+
+  .highlight-text {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .play-button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+} /* Video Section */
+.video-demo {
+  padding: 4rem 2rem;
+  background: #1e1e1e;
+  color: white;
+  text-align: center;
+}
+
+.video-demo h2 {
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+}
+
+.video-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 16/9;
+}
+
+.game-trailer {
+  transition: transform 0.3s ease;
+}
+
+.game-trailer:hover {
+  transform: scale(1.02);
+}
+
+.video-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  text-align: left;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background: #c0392b;
+}
+
+.video-caption {
+  margin-top: 1.5rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .video-demo {
+    padding: 2rem 1rem;
+  }
+
+  .highlight-text {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .play-button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
+.roadmap-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.roadmap-header h1 {
+  font-size: 50px;
+  color: #daa520;
+  margin-bottom: 1rem;
+}
+
+.timeline-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #2c3e50;
+}
+
+.timeline-progress {
+  position: absolute;
+  left: 53%;
+  width: 4px;
+  height: 100%;
+  background: #e0e0e0;
+  transform: translateX(-50%);
+}
+
+.phase-card {
+  position: relative;
+  width: 45%;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.phase-card:nth-child(odd) {
+  left: 0;
+}
+
+.phase-card:nth-child(even) {
+  left: 55%;
+}
+
+.phase-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2.5rem;
+  color: #daa520;
+}
+
+.phase-tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #daa520;
+  color: #2c3e50;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.milestones {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.milestones li {
+  position: relative;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+}
+
+.milestones li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #1a1a1a;
+}
+
+.progress-indicator {
+  height: 4px;
+  background: #eee;
+  margin-top: 1.5rem;
+  border-radius: 2px;
+}
+
+.progress-bar {
+  width: 20%;
+  height: 100%;
+  background: #2ecc71;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+.progress-indicator {
+  height: 8px;
+  background: #eee;
+  margin-top: 1.5rem;
+  border-radius: 4px;
+  position: relative;
+}
+.footer-note {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #888;
+  display: flex;
+  justify-content: center;
+}
+.progress-bar {
+  height: 100%;
+  background: #2ecc71;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-percent {
+  position: absolute;
+  right: -25px;
+  top: -5px;
+  font-size: 0.9rem;
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+.phase-card.current {
+  border: 2px solid #daa520;
+}
+
+.phase-card:hover {
+  transform: translateY(-5px);
+}
+
+.roadmap-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.legend-item span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.current .legend-item span {
+  background: #e74c3c;
+}
+.upcoming .legend-item span {
+  background: #2ecc71;
+}
+
+@media (max-width: 768px) {
+  .phase-card {
+    width: 100%;
+    left: 0 !important;
+    margin: 2rem auto;
+  }
+
+  .timeline-progress {
+    display: none;
+  }
+}

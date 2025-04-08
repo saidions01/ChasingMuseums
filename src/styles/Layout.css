@@ -1,0 +1,89 @@
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 18px;
+  width: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-icon span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.menu-icon.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.content-wrapper {
+  padding: 40px;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Sidebar Interactions */
+.sidebar {
+  width: 60px;
+  transition: all 0.3s ease;
+}
+
+.sidebar.open {
+  width: 200px;
+}
+
+.sidebar:hover .social-icons {
+  opacity: 1;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 60px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+/* Active Link Animation */
+.nav a.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #daa520;
+  position: absolute;
+  bottom: -5px;
+  animation: underlineGrow 0.3s ease;
+}
+
+@keyframes underlineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
